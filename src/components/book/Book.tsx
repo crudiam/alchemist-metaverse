@@ -3,6 +3,20 @@ import HTMLFlipBook from "react-pageflip"
 import styled from 'styled-components';
 
 
+const StyledBookCover = styled.div`
+
+    box-sizing: border-box;
+
+    background-image: url('/assets/img/book_background.png');
+    background-size: cover;
+
+    height: 700px;
+    width: 1137px;
+
+    padding: 62px 130px
+
+
+`;
 
 const StyledBookWrapper = styled.div`
     display: block;
@@ -40,13 +54,13 @@ const StyledPage = styled.div`
 
     &.--left {
         border-left: 0;
-        /* box-shadow: inset -7px 0 30px -7px rgba(0, 0, 0, 0.4); */
+        box-shadow: inset -7px 0 30px -7px rgba(0, 0, 0, 0.6);
 
     }
 
     &.--right {
         border-left: 0;
-        /* box-shadow: inset 7px 0 30px -7px rgba(0, 0, 0, 0.4); */
+       box-shadow: inset 7px 0 30px -7px rgba(0, 0, 0, 0.6);
     }
 
 `;
@@ -67,20 +81,22 @@ export const Book: React.FunctionComponent = ({ children }) =>  {
      * @todo: finalize the default props
      */
     return (
-        <StyledBookWrapper id="flip-book">
-            <HTMLFlipBook {...{
-                    width: 550, // base page width
-                    height: 733, // base page height
-                    size: "stretch",
-                    minWidth: 315,
-                    maxWidth: 550,
-                    minHeight: 420,
-                    maxHeight: 733,
-                    maxShadowOpacity: 0.2,
-                    showCover: false,
-                    mobileScrollSupport: false,
-                    children
-            }} />
-        </StyledBookWrapper>
+        <StyledBookCover>
+            <StyledBookWrapper id="flip-book">
+                <HTMLFlipBook {...{
+                        width: 440, // base page width
+                        height: 580, // base page height
+                        size: "stretch",
+                        minWidth: 315,
+                        maxWidth: 440,
+                        minHeight: 420,
+                        maxHeight: 580,
+                        maxShadowOpacity: 0.2,
+                        showCover: false,
+                        mobileScrollSupport: false,
+                        children
+                }} />
+            </StyledBookWrapper>
+        </StyledBookCover>
     );
 };
