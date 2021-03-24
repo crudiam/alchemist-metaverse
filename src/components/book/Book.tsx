@@ -1,21 +1,15 @@
-import { Children, forwardRef, FunctionComponent, ReactElement } from 'react';
-import HTMLFlipBook from "react-pageflip"
+import { forwardRef } from 'react';
+import HTMLFlipBook from "./HTMLFlipBook";
 import styled from 'styled-components';
 
 
 const StyledBookCover = styled.div`
-
     box-sizing: border-box;
-
     background-image: url('/assets/img/book_background.png');
     background-size: cover;
-
     height: 700px;
     width: 1137px;
-
     padding: 62px 130px
-
-
 `;
 
 const StyledBookWrapper = styled.div`
@@ -45,17 +39,14 @@ const StyledPage = styled.div`
     font-size: 20px;
     line-height: 1.9;
     letter-spacing: 0.05em;
-
     background-color: hsl(35, 55, 98);
     color: hsl(35, 35, 35);
     border: solid 1px hsl(35, 20, 70);
-
     overflow: hidden;
 
     &.--left {
         border-left: 0;
         box-shadow: inset -7px 0 30px -7px rgba(0, 0, 0, 0.6);
-
     }
 
     &.--right {
@@ -84,8 +75,8 @@ export const Book: React.FunctionComponent = ({ children }) =>  {
         <StyledBookCover>
             <StyledBookWrapper id="flip-book">
                 <HTMLFlipBook {...{
-                        width: 440, // base page width
-                        height: 580, // base page height
+                        width: 440,
+                        height: 580,
                         size: "stretch",
                         minWidth: 315,
                         maxWidth: 440,

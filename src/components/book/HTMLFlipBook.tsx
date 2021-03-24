@@ -5,13 +5,14 @@ import { PageFlip } from "page-flip";
 
 
 interface Props {
-  onFlip: (e: any) => void;
-  onChangeOrientation: (e: any) => void;
-  onChangeState: (e: any) => void;
-  onInit: (e: any) => void;
-  onUpdate: (e: any) => void;
-  className: string;
-  style: any;
+  onFlip?: (e: any) => void;
+  onChangeOrientation?: (e: any) => void;
+  onChangeState?: (e: any) => void;
+  onInit?: (e: any) => void;
+  onUpdate?: (e: any) => void;
+  className?: string;
+  style?: any;
+  [key: string]: any;
 }
 
 
