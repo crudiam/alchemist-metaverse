@@ -1,5 +1,5 @@
 import { Children, forwardRef, FunctionComponent, ReactElement } from 'react';
-import HTMLFlipBook from "react-pageflip"
+import HTMLFlipBook from "./HTMLFlipBook"
 import styled from 'styled-components';
 
 
@@ -24,7 +24,7 @@ const StyledBookWrapper = styled.div`
 `;
 
 const StyledPage = styled.div`
-    padding: 1em 3em;
+    padding: ${props => props.style?.padding ? props.style.padding : '1em 3em'};
     box-sizing: border-box;
     /* border: 2px solid rgb(175,113,67, 0.8); */
     background-color: #FBE5AF;
@@ -42,7 +42,7 @@ const StyledPage = styled.div`
         inset 0 0 20px rgba(175, 113, 67,0.4), 
         inset 0 0 30px rgba(175, 113, 67,0.8);
 
-    font-size: 20px;
+    font-size: 15px;
     line-height: 1.9;
     letter-spacing: 0.05em;
 
@@ -70,7 +70,7 @@ type DivProps = React.HTMLProps<HTMLDivElement>
 
 export const Page = forwardRef<HTMLDivElement, DivProps>((props, ref) => {
     return (
-        <StyledPage className="book-page" ref={ref}>
+        <StyledPage className="book-page" ref={ref} style={props.style}>
             {props.children}
         </StyledPage>
     );

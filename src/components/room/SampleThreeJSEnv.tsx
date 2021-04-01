@@ -44,58 +44,58 @@ class SampleThreeEnv extends Component<Props> {
         const hoveredObjects = {};
         
         const onMouseMove = ( event ) => {
-            if (this.state.displaySpellBook) {
-                return;
-            }
+            // if (this.state.displaySpellBook) {
+            //     return;
+            // }
 
-            mouse.x = ( event.clientX / window.innerWidth ) * 2 - 1;
-            mouse.y = - ( event.clientY / window.innerHeight ) * 2 + 1;
+            // mouse.x = ( event.clientX / window.innerWidth ) * 2 - 1;
+            // mouse.y = - ( event.clientY / window.innerHeight ) * 2 + 1;
 
-            raycaster.setFromCamera( mouse, camera );
-            const intersects = raycaster.intersectObjects( scene.children, true );
-            const hoveredObjectUuids = intersects.map(el => el.object.name);
+            // raycaster.setFromCamera( mouse, camera );
+            // const intersects = raycaster.intersectObjects( scene.children, true );
+            // const hoveredObjectUuids = intersects.map(el => el.object.name);
 
 
-            for (let i = 0; i < intersects.length; i++) {
-                const current = intersects[i].object;
+            // for (let i = 0; i < intersects.length; i++) {
+            //     const current = intersects[i].object;
 
-                if (hoveredObjects[current.name]) {
-                    continue; // was hovered before
-                }
+            //     if (hoveredObjects[current.name]) {
+            //         continue; // was hovered before
+            //     }
 
-                if (current.name === 'open_book_2') {
-                    this.setState({ isSpellBookHovered: true });
-                    current.position.z -=0.1;
-                }
+            //     if (current.name === 'open_book_2') {
+            //         this.setState({ isSpellBookHovered: true });
+            //         current.position.z -=0.1;
+            //     }
 
-                if (current.name.includes('Cube')) {
-                    this.setState({ isStackedBooksHovered: true });
-                    current.position.z -=0.1;
-                }
+            //     if (current.name.includes('Cube')) {
+            //         this.setState({ isStackedBooksHovered: true });
+            //         current.position.z -=0.1;
+            //     }
 
-                hoveredObjects[current.name] = current;
-            }
+            //     hoveredObjects[current.name] = current;
+            // }
 
-            for (let name of Object.keys(hoveredObjects)) {
-                let idx = hoveredObjectUuids.indexOf(name);
-                if (idx === -1) {
+            // for (let name of Object.keys(hoveredObjects)) {
+            //     let idx = hoveredObjectUuids.indexOf(name);
+            //     if (idx === -1) {
 
-                    if (name === 'open_book_2') {
-                        this.setState({ isSpellBookHovered: false });
-                        let current = hoveredObjects[name];
+            //         if (name === 'open_book_2') {
+            //             this.setState({ isSpellBookHovered: false });
+            //             let current = hoveredObjects[name];
 
-                        current.position.z += 0.1;
-                    }
+            //             current.position.z += 0.1;
+            //         }
                     
-                    if (name.includes('Cube')) {
-                        this.setState({ isStackedBooksHovered: false });
-                        let current = hoveredObjects[name];
-                        current.position.z +=0.1;
-                    }
-                    delete hoveredObjects[name];
-                }
+            //         if (name.includes('Cube')) {
+            //             this.setState({ isStackedBooksHovered: false });
+            //             let current = hoveredObjects[name];
+            //             current.position.z +=0.1;
+            //         }
+            //         delete hoveredObjects[name];
+            //     }
 
-            }
+            // }
 
         }
 

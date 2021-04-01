@@ -31,7 +31,7 @@ const Modal: ForwardRefRenderFunction<ModalHandle, ReactNode> = ({ children }, r
     const [isOpen, setIsOpen] = useState(false);
 
     const open = useCallback(()  => setIsOpen(true), [])
-    const close = useCallback(()  => setIsOpen(false), [])
+    const close = useCallback(()  => null /** setIsOpen(false) **/, [])
 
     useImperativeHandle(ref, () => ({open, close }), [open, close]);
 

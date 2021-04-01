@@ -4,18 +4,18 @@ import { PageFlip } from "page-flip";
 /** tslint:disable */
 
 
-interface Props {
-  onFlip: (e: any) => void;
-  onChangeOrientation: (e: any) => void;
-  onChangeState: (e: any) => void;
-  onInit: (e: any) => void;
-  onUpdate: (e: any) => void;
-  className: string;
-  style: any;
-}
+// interface Props {
+//   onFlip: (e: any) => void;
+//   onChangeOrientation: (e: any) => void;
+//   onChangeState: (e: any) => void;
+//   onInit: (e: any) => void;
+//   onUpdate: (e: any) => void;
+//   className: string;
+//   style: any;
+// }
 
 
-export default class HTMLFlipBook extends React.Component<Props, any> {
+export default class HTMLFlipBook extends React.Component<any, any> {
     private pageFlip;
     private el;
     private childRef;
