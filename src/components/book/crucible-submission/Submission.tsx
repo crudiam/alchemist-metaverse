@@ -192,10 +192,19 @@ const Submission: React.FunctionComponent = () => {
             </Page>
 
             <Page>
-                Geometric shapes seemed to be a quite common theme, we can merge it with other projects
-                and ideas. <br />
+                Geometric shapes was being tackled by other submissions so I did not go deep into that topic, 
+                from my limited experience we can plug in and do anything we want with them. using p5js 
+                we can also just merge this with other projects without any problems.
+                <br />
                 same goes for the text and the symbols. I mostly used random generation, adding some 
                 meaning into it sounds like a good idea to me but it's for community to decide.
+                <br />
+
+                Following is the way I built the tree and also the previous background image I submitted 
+                on the basecamp. it's a really good read and nice challenge to tackle. hope you'll be 
+                as amazed as I am with what you can do using fairly simple rules...
+                http://paulbourke.net/fractals/lsys/
+
 
             </Page>
         </Book>
