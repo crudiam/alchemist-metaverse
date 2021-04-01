@@ -18,7 +18,6 @@ function App() {
     if (submissionModal.current !== null) {
       onSubmissionClick();
     }
-
   }, [submissionModal])
 
 

@@ -191,8 +191,11 @@ const Submission: React.FunctionComponent = () => {
                 as we construct the bottles we can also construct corks. basically every item we need.
             </Page>
 
-
             <Page>
+                Geometric shapes seemed to be a quite common theme, we can merge it with other projects
+                and ideas. <br />
+                same goes for the text and the symbols. I mostly used random generation, adding some 
+                meaning into it sounds like a good idea to me but it's for community to decide.
 
             </Page>
         </Book>

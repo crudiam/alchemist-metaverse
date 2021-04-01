@@ -36,9 +36,9 @@ const Modal: ForwardRefRenderFunction<ModalHandle, ReactNode> = ({ children }, r
     useImperativeHandle(ref, () => ({open, close }), [open, close]);
 
     const handleESC = useCallback((event: KeyboardEvent) => {
-        if (event.key === 'Escape') {
-            setIsOpen(false);
-        }
+        // if (event.key === 'Escape') {
+        //     setIsOpen(false);
+        // }
     }, []);
 
     useEffect(() => {
