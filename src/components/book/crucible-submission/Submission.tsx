@@ -108,7 +108,7 @@ const Submission: React.FunctionComponent = () => {
                 <br />
 
                 I think this is really a good line. When I think about alchemists imagine 
-                endless experiments, iterations over iterations mostly failures with occasionally successes 
+                endless experiments, iterations over iterations some failures with occasionally successes 
                 but mostly the drive to acheive greatness. 
                 <br />
 
@@ -121,19 +121,17 @@ const Submission: React.FunctionComponent = () => {
             <Page>
                 Tree represents the time that has passed 
                 since the mint, every seed gives tree it's own characteristics. it grows by the time 
-                passes, leaves and flowers grows if it has stake and rewars in the crucible but nothing more
+                passes, leaves and flowers grows if the crucible has stake and rewards inside. Nothing more
                 simple and easy. 
-                <br />
                 <br />
                 that is the only constant part of my project. Everything else can change, even the 
                 way we represent the tree but not the characteristics.
                 <br />
                 <br />
-
                 Whatever we decide to build on top of this basic representation of time is a mystery.
                 but if you mint a crucible your NFT image will be the snapshot of the projects state 
-                at that point in time.
-                <br />
+                at that point in time. You can choose to update the image in the future but you can never 
+                go back to the initial image. Time flows one way my friend.
                 <br />
 
                 That is just an idea I had and wanted to share, maybe I will think about it more at 
@@ -146,34 +144,31 @@ const Submission: React.FunctionComponent = () => {
                 <img src={ellipsis_2} alt="ellipsis" />
                 <br />
 
-                here are some additional work I did: <br/> 
+                Here are some details to the current state: <br/> 
                 for bottles I wanted to have 2 main types: 
                 <ul>
-                    <li>Ellipsis</li>
-                    <li>N-gon</li>
+                    <li>Ellipsis (implemented)</li>
+                    <li>N-gon (not implemented)</li>
                 </ul> 
 
                 Starting with the ellipsis I wanted to demonstrate how it could be built. 
-                as you can see in the example all we needed was 7 variables to be generated 
-                from the stream. Same can be applied for N-gon as well.
-                as we construct the bottles we can also construct corks. basically every item we need.
+                as you can see in the example all we needed was 7 variables (numbers in range) to be generated 
+                from the seed. Same can be applied for N-gon as well (with more variables but the same principle).
+                Same way we construct the bottles we can also construct corks and add multiple types, multiple variables per cork ...etc.
             </Page>
 
             <Page>
+                Basically every item we need can be drawn with a bit of math and geometry, the only idea I had to abondon was
+                the clothing and patterns on the bottles. That is really hard to do with JS... <br />
                 Geometric shapes was being tackled by other submissions so I did not go deep into that topic, 
-                from my limited experience we can plug in and do anything we want with them. using p5js 
-                we can also just merge this with other projects without any problems.
-                <br />
+                from my limited experience we can plug in and do anything we want with them as long as we know what we want to do.
+                on that regard I suggest looking at other submissions for merge opportunities.
                 same goes for the text and the symbols. I mostly used random generation, adding some 
                 meaning into it sounds like a good idea to me but it's for community to decide.
                 <br />
-
                 Following is the way I built the tree and also the previous background image I submitted 
-                on the basecamp. it's a really good read and nice challenge to tackle. hope you'll be 
-                as amazed as I am with what you can do using fairly simple rules...
-                http://paulbourke.net/fractals/lsys/
-
-
+                on the basecamp. it's a really good read and a decent challenge. I hope you'll be 
+                as amazed as I am with amazing things you can do using fairly simple rules... <a href="http://paulbourke.net/fractals/lsys/">read me</a>
             </Page>
         </Book>
     );
