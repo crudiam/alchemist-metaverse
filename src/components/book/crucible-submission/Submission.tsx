@@ -89,7 +89,6 @@ const Submission: React.FunctionComponent = () => {
                 <b>Background:</b> Randomly selected Pattern from seed <br />
                 <b>Other Colors:</b> Randomly selected from seed <br />
             </Page>
-
             <Page>
 
                 The Crucible. <br />
