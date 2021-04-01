@@ -1,6 +1,5 @@
-import { memo, useEffect, useState } from "react";
+import { useState } from "react";
 import {Book, Page } from "../Book";
-import styled from "styled-components";
 
 
 
@@ -18,7 +17,7 @@ import pure_7 from './images/carousel/crucible_pure_7.png';
 import pure_8 from './images/carousel/crucible_pure_8.png';
 import pure_9 from './images/carousel/crucible_pure_9.png';
 
-import ellipsis_1 from './images/ellipsis_1.png';
+// import ellipsis_1 from './images/ellipsis_1.png';
 import ellipsis_2 from './images/ellipsis_2.png';
 
 
@@ -38,43 +37,12 @@ const demo_images = [
     pure_9,
 ];
 
-const StyledImage = styled.img`
-    max-width: 100%;
-
-`;
-
-const seedCode = `
-const initSeed = (seed) => {
-
-    if (typeof seed === 'number') seed = seed.toString(16);
-    if (seed.startsWith('0x')) seed = seed.slice(2);
-
-    const byte = i => parseInt(seed.substr(i, 2), 16);
-
-    let byteIndex = 0;
-    const nextByte = () => byte(byteIndex++ % seed.length);
-    
-    const updateRandomSeed = () => randomSeed(nextByte());
-
-    return { 
-        raw: seed,
-        nextByte,
-        updateRandomSeed
-    };
-}`
-
-
-const Image = memo(function Image({ src }: { src: any}) {
-    return <StyledImage src={src}  />;
-})
-
-
 const Submission: React.FunctionComponent = () => {
 
     const [demoIndex, setDemoIndex] = useState(0);
 
 
-    const pages = new Array(10).fill('hello world').map((t, i) => <Page key={`documentation-page-${i}`} >{t}</Page>);
+    // const pages = new Array(10).fill('hello world').map((t, i) => <Page key={`documentation-page-${i}`} >{t}</Page>);
 
     setTimeout(() => {
         setDemoIndex(demoIndex + 1);
@@ -175,7 +143,7 @@ const Submission: React.FunctionComponent = () => {
             </Page>
 
             <Page>
-                <img src={ellipsis_2} />
+                <img src={ellipsis_2} alt="ellipsis" />
                 <br />
 
                 here are some additional work I did: <br/> 

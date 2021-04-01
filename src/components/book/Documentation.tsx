@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import {Book, Page } from "./Book";
 
 
@@ -7,7 +7,7 @@ const README_URL = 'https://raw.githubusercontent.com/alchemistcoin/alchemist/ma
 
 const Documentation: React.FunctionComponent = () => {
 
-    const [readme, setReadme] = useState<string>('');
+    // const [readme, setReadme] = useState<string>('');
 
 
     useEffect(() => {

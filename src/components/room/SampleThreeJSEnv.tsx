@@ -39,11 +39,11 @@ class SampleThreeEnv extends Component<Props> {
         const loader = new GLTFLoader();
 
         const raycaster = new THREE.Raycaster();
-        const mouse = new THREE.Vector2();
+        // const mouse = new THREE.Vector2();
         raycaster.layers.enable(1)
-        const hoveredObjects = {};
+        // const hoveredObjects = {};
         
-        const onMouseMove = ( event ) => {
+        const onMouseMove = ( _event ) => {
             // if (this.state.displaySpellBook) {
             //     return;
             // }
