@@ -334,7 +334,7 @@ const Submission = ({submission}) => {
         <StyledSubmission>
             <StyledSubmissionLeft>
                 {submission.demoUrl && (
-                    <iframe src={submission.demoUrl} width="100%" height="100%"></iframe>
+                    <iframe src={submission.demoUrl} title={submission.name} width="100%" height="100%"></iframe>
                 )}
                 {submission.videos && submission.videos.map((src, index) => (
 
@@ -346,7 +346,7 @@ const Submission = ({submission}) => {
 
                 {
                     submission.images && submission.images.map((src, index) => (
-                        <img src={src} key={`submission-image-${index}`}/>
+                        <img src={src} key={`submission-image-${index}`} alt={`submission-${index}`}/>
                     ))
                 }
 
@@ -359,10 +359,10 @@ const Submission = ({submission}) => {
                 <h1>{submission.name}</h1>
                 <h2>{submission.creator}</h2>
                 <span>
-                    <a target='_blank' href={submission.link}>basecamp</a>
+                    <a target='_blank' rel="noreferrer" href={submission.link}>basecamp</a>
                     {submission.file  && <>
                         &nbsp; | &nbsp;
-                        <a target='_blank' href={submission.file}>file</a>
+                        <a target='_blank' rel="noreferrer" href={submission.file}>file</a>
                     </>}
                 </span>
 
