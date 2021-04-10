@@ -7,6 +7,7 @@ import Lights from './components/Three/Lights';
 import {Canvas } from '@react-three/fiber';
 import Modal from './components/Modal';
 import Documentation from './components/book/Documentation';
+import Submissions from './components/submissions';
 
 const Scene = (props) => {
 
@@ -25,15 +26,16 @@ function App(props) {
   const faqModal = useRef(null);
 
   const onDocumentationClick = () => {
-    documentationModal.current.open();
+    // documentationModal.current.open();
   }
 
   const onFAQClick = () => {
-    faqModal.current.open();
+    // faqModal.current.open();
   }
 
   return (
     <div className="App">
+      <Submissions />
       <Modal ref={documentationModal}>
         <Documentation />
       </Modal>
