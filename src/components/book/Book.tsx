@@ -36,13 +36,17 @@ const StyledPage = styled.div`
         inset 0 0 20px rgba(175, 113, 67,0.4), 
         inset 0 0 30px rgba(175, 113, 67,0.8);
 
-    font-size: 20px;
+    font-size: 15px;
     line-height: 1.9;
     letter-spacing: 0.05em;
     background-color: hsl(35, 55, 98);
     color: hsl(35, 35, 35);
     border: solid 1px hsl(35, 20, 70);
     overflow: hidden;
+    cursor: pointer;
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
 
     &.--left {
         border-left: 0;
@@ -52,6 +56,16 @@ const StyledPage = styled.div`
     &.--right {
         border-left: 0;
        box-shadow: inset 7px 0 30px -7px rgba(0, 0, 0, 0.6);
+    }
+
+
+    h1 {
+        font-size: 1.1em;
+    }
+
+
+    > .markdown {
+        max-width: 100%;
     }
 
 `;

@@ -76,12 +76,6 @@ export default function Model(props) {
         rotation={[0, -1, -Math.PI / 2]}
       />
 
-      <Text 
-        position={[-0.79, 1.25, -0.36]}
-        rotation={[0, 0.24, 0]}
-        fontSize={0.03}
-      >Documentation</Text>
-
       <mesh
         geometry={nodes.SM_PROP_book_interior_03.geometry}
         material={materials['M_PROP_frames_interior.001']}

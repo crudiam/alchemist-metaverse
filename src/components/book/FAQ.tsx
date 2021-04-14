@@ -1,11 +1,12 @@
 import ReactMarkdown from "react-markdown";
 import {Book, Page } from "./Book";
 
-
-interface DocumentationProps {
+interface FAQProps {
     pages: string[];
 }
-const Documentation: React.FunctionComponent<DocumentationProps> = ( { pages }) => {
+
+const FAQ: React.FunctionComponent<FAQProps> = ({ pages }) => {
+
     const children = pages
         .map((t, i) => (
             <Page key={`faq-page-${i}`} >
@@ -14,6 +15,6 @@ const Documentation: React.FunctionComponent<DocumentationProps> = ( { pages }) 
         ));
 
     return (<Book>{children}</Book>);
-};
+}
 
-export default Documentation;
+export default FAQ;

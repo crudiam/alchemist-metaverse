@@ -51,12 +51,15 @@ const Modal: ForwardRefRenderFunction<ModalHandle, ReactNode> = ({ children }, r
 
 
     const handleWrapperClick = e => {
-        if (e.target.className.includes('book-page')) {
-            return;
-        }
+        // if (
+        //     e.target.className.includes('book-page') || 
+        //     e.target.className.includes('markdown')
+        // ) {
+        //     return;
+        // }
 
-        e.stopPropagation();
-        close();
+        // e.stopPropagation();
+        // close();
     };
 
     const child = (
