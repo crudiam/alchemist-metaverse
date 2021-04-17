@@ -22,7 +22,6 @@ const StyledContainer = styled.div`
     width: 100vw;
     height: 100vh;
     
-    background: rgba(0, 255, 0, 0.1);
 `;
 
 
@@ -36,11 +35,7 @@ interface ContainerState {
     [key: string]: DraggableItem;
 }
 
-
-
 const SampleComponent = () => (<div>Sample Component</div>)
-
-
 
 
 const sampleItems = {

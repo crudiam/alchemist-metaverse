@@ -72,13 +72,13 @@ function App(props) {
       </Modal>
 
 
-      {/* <Canvas>
+      <Canvas>
           <Lights />
           <Scene {...{ onFAQClick }} />
-      </Canvas> */}
+      </Canvas>
 
       {/* Loader */}
-      {/* <Loader /> */}
+      <Loader />
     </div>
   );
 }
