@@ -9,6 +9,7 @@ import Modal from './components/Modal';
 // import Documentation from './components/book/Documentation';
 import FAQ from './components/book/FAQ';
 import { splitMarkdownIntoPages } from './components/book/helpers';
+import DnDContext from './components/dnd';
 
 const Scene = (props) => {
   return (
@@ -20,62 +21,17 @@ const Scene = (props) => {
 
 
 
-const FAQ_URL = 'https://hackmd.io/@thegostep/%E2%9A%97%EF%B8%8F/download';
 // const README_URL = 'https://raw.githubusercontent.com/alchemistcoin/alchemist/main/README.md';
 
 function App(props) {
-  // const documentationModal = useRef(null);
-  const faqModal = useRef(null);
-
-  const [faq, setFaq] = useState([]);
-  // const [readme, setReadme] = useState([]);
-
-    useEffect(() => {
-        const getFAQ = async () => {
-            const resp = await fetch(FAQ_URL);
-            const body = await resp.text()
-            const pages = splitMarkdownIntoPages(body);
-            setFaq(pages)
-        };
-
-        // const getReadMe = async () => {
-        //     const resp = await fetch(README_URL);
-        //     const body = await resp.text()
-        //     const pages = splitMarkdownIntoPages(body);
-        //     setReadme(pages)
-        // };
-
-        getFAQ();
-        // getReadMe();
-
-    }, []);
-
-
-  // const onDocumentationClick = () => {
-  //   documentationModal.current.open();
-  // }
-
-  const onFAQClick = () => {
-    faqModal.current.open();
-  }
-
-
-
 
   return (
     <div className="App">
-      {/* <Modal ref={documentationModal}>
-        <Documentation pages={readme} />
-      </Modal>
-       */}
-      <Modal ref={faqModal}>
-        <FAQ pages={faq} />
-      </Modal>
-
+      <DnDContext />
 
       <Canvas>
           <Lights />
-          <Scene {...{ onFAQClick }} />
+          <Scene />
       </Canvas>
 
       {/* Loader */}
