@@ -1,5 +1,5 @@
-import { FC, ReactChild, ReactNode, useCallback, useEffect, useState } from "react";
-import Draggable, { DraggableChildProps, DraggableItem as DraggableItemProps } from "./draggable";
+import { FC, useCallback, useEffect, useState } from "react";
+import Draggable, { DraggableItem as DraggableItemProps } from "./draggable";
 
 import styled from 'styled-components';
 import update from 'immutability-helper';
@@ -24,9 +24,7 @@ const StyledContainer = styled.div`
     top: 0;
     width: 100vw;
     height: 100vh;
-    
 `;
-
 
 export interface DraggableItem extends DraggableItemProps {
     visible: boolean;
@@ -76,9 +74,10 @@ const getItemFromKey = (key: string) => {
 const Container: FC = () => {
     const [items, setItems] = useState<ContainerState>({...sampleItems });
 
-    const moveBox = useCallback(({ id, left, top }: Partial<DraggableItem>) => 
-        setItems(update(items, { [id]: { $merge: { left, top }}})),
-        [items, setItems]
+
+    const updateItem = useCallback((id: ItemName, props: Partial<DraggableItem>) => 
+       setItems(update(items, { [id]: { $merge: props }})),
+       [items, setItems]
     );
 
     const handleItemPositionChange = ({x, y}: XYCoord, { id, left, top }: DraggableItem) => ({
@@ -90,27 +89,27 @@ const Container: FC = () => {
     const [, ref] = useDrop(() => ({
         accept: ItemType.DraggableItem,
         collect: monitor => ({ isOver: !!monitor.isOver() }),
-        drop: (item: DraggableItem, monitor) => moveBox(handleItemPositionChange(
-            monitor.getDifferenceFromInitialOffset(),
-            item
-        )),
-    }), [moveBox]);
-
-    const handleKeyDown = (e: KeyboardEvent) => {
-        const item = getItemFromKey(e.key);
-
-        if (!item || items[item].visible) return;
-
-        setItems(update(items, {
-            [item]: { $merge: { visible: !items[item].visible }}
-        }));
-    }
+        drop: (item: DraggableItem, monitor) => updateItem(
+            item.id, 
+            handleItemPositionChange(
+                monitor.getDifferenceFromInitialOffset(),
+                item
+            )
+        ),
+    }), [updateItem]);
 
     useEffect(() => {
-        document.addEventListener('keydown', handleKeyDown)
-        return () => document.removeEventListener('keydown', handleKeyDown);
-    }, []);
+        const onKeyDown = (e: KeyboardEvent) => {
+            const key = getItemFromKey(e.key);
+            const current = items[key];
+            if (!current || current.visible) return;
+            updateItem(key, { visible: true });
+        }
 
+        document.addEventListener('keydown', onKeyDown)
+
+        return () => document.removeEventListener('keydown', onKeyDown);
+    }, [updateItem]);
 
     return (
         <StyledContainer {...{
@@ -120,7 +119,11 @@ const Container: FC = () => {
 
                 if (!visible) return null;
 
-                return (<Draggable key={key} {...rest } />);
+                return (<Draggable {...{ 
+                    ...rest, 
+                    key,
+                    close: () => updateItem(key as ItemName, { visible: false }),
+                }} />);
             })
         }} />
     );

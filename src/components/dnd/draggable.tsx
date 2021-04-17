@@ -1,7 +1,7 @@
 import { FC, useState } from 'react';
 import { useDrag } from 'react-dnd';
 import styled from 'styled-components';
-import { ItemType } from './types';
+import { ItemName, ItemType } from './types';
 
 
 
@@ -10,10 +10,11 @@ export interface DraggableChildProps {
 }
 
 interface DraggableProps {
-    id: string;
+    id: ItemName;
     left: number;
     top: number;
     Component: FC<DraggableChildProps>;
+    close?: () => void;
 }
 
 export interface DraggableItem extends DraggableProps {
@@ -111,7 +112,7 @@ const StyledDraggableChildrenWrapper = styled.div`
     width: 100%;
 `;
 
-const Draggable: FC<DraggableProps> = ({ id, left, top, Component })  => {
+const Draggable: FC<DraggableProps> = ({ id, left, top, Component, close })  => {
     const [minimized, setMinimized] = useState(false);
 
     const [{ isDragging: _ }, drag, preview] = useDrag(() => ({
@@ -134,7 +135,7 @@ const Draggable: FC<DraggableProps> = ({ id, left, top, Component })  => {
             <StyledDraggableHandle ref={drag} minimized={minimized}>
                 <h1>{id}</h1>
                 <DraggableHandleButton onClick={toggleMinimized}>_</DraggableHandleButton>
-                <DraggableHandleButton disabled>x</DraggableHandleButton>
+                <DraggableHandleButton onClick={close}>x</DraggableHandleButton>
             </StyledDraggableHandle>
             <StyledDraggableChildrenWrapper>
                 <Component minimized={minimized} />
