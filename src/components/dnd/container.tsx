@@ -7,7 +7,7 @@ import { useDrop, XYCoord } from "react-dnd";
 import { ItemName, ItemType } from "./types";
 import SoundCloud from "../widgets/soundCloud";
 import shortcutWidget from "../widgets/shortcuts";
-import aboutProjectWidget from "../widgets/project";
+import aboutProjectWidget from "../widgets/text/project";
 
 
 
