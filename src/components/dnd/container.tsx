@@ -6,6 +6,7 @@ import update from 'immutability-helper';
 import { useDrop, XYCoord } from "react-dnd";
 import { ItemName, ItemType } from "./types";
 import SoundCloud from "../widgets/soundCloud";
+import shortcutWidget from "../widgets/shortcuts";
 
 
 
@@ -25,19 +26,13 @@ const StyledContainer = styled.div`
 `;
 
 
-
-interface DraggableItem extends DraggableItemProps {
+export interface DraggableItem extends DraggableItemProps {
     visible: boolean;
 }
 
 interface ContainerState {
     [key: string]: DraggableItem;
 }
-
-const SampleComponent: FC<DraggableChildProps> = ({ minimized }) => minimized ? null :(
-    <div>Sample Component</div>
-);
-
 
 const sampleItems = {
     [ItemName.Radio]: { 
@@ -47,13 +42,8 @@ const sampleItems = {
         visible: true,
         Component: SoundCloud
     },
-    [ItemName.Sample]: { 
-        id: ItemName.Sample, 
-        top: 300, 
-        left: 300,
-        visible: true,
-        Component: SampleComponent
-    },
+    [ItemName.Shortcuts]: shortcutWidget
+
 }
 
 const Container: FC = () => {

@@ -70,6 +70,7 @@ const StyledDraggableHandle = styled.div<DraggableChildProps>`
     flex-direction: row;
 
     > span {
+        padding-right: 1em;
         line-height: 25px;
         flex-grow: 1;
     }
