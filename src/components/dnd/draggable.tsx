@@ -21,17 +21,32 @@ const StyledDraggable = styled.div<Partial<DraggableProps>>`
     border: 1px solid black;
     background: rgba(255, 255, 255, 0.5);
 
-    padding: 0.5em 1em;
-    cursor: move;
-    width: 50px;
-    height: 50px;
+    padding: 0;
+
+    max-width: 100%;
+    min-width: 200px;
 
     z-index: 2;
 `;
 
+
+const StyledDraggableHandle = styled.div`
+    width: 100%;
+    height: 30px;
+
+    border: 1px solid black;
+    cursor: move;
+`;
+
+const StyledDraggableChildrenWrapper = styled.div`
+    width: 100%;
+
+
+`;
+
 const Draggable: FC<DraggableProps> = ({ id, left, top, children })  => {
 
-    const [{ isDragging: _ }, drag] = useDrag(() => ({
+    const [{ isDragging: _ }, drag, preview] = useDrag(() => ({
         item: { id, left, top },
         type: ItemType.DraggableItem,
         collect: (monitor) => ({
@@ -42,11 +57,15 @@ const Draggable: FC<DraggableProps> = ({ id, left, top, children })  => {
     return (
         <StyledDraggable {...{
             role: ItemType.DraggableItem,
-            ref: drag,
-            children,
+            ref: preview,
             left,
             top,
-        }} />
+        }}> 
+            <StyledDraggableHandle ref={drag} >
+                {id}
+            </StyledDraggableHandle>
+            <StyledDraggableChildrenWrapper children={children} />
+        </StyledDraggable>
     );
 }
 

@@ -78,7 +78,7 @@ function App(props) {
       </Canvas> */}
 
       {/* Loader */}
-      <Loader />
+      {/* <Loader /> */}
     </div>
   );
 }
