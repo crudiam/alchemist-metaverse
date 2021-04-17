@@ -8,6 +8,7 @@ import { ItemName, ItemType } from "./types";
 import SoundCloud from "../widgets/soundCloud";
 import shortcutWidget from "../widgets/shortcuts";
 import aboutProjectWidget from "../widgets/text/project";
+import faqWidget from "../widgets/text/faq";
 
 
 
@@ -40,11 +41,12 @@ const sampleItems = {
         id: ItemName.Radio, 
         top: 0, 
         left: 0,
-        visible: true,
+        visible: false,
         Component: SoundCloud
     },
     [ItemName.Shortcuts]: shortcutWidget,
-    [ItemName.AboutProject]: aboutProjectWidget
+    [ItemName.AboutProject]: aboutProjectWidget,
+    [ItemName.FAQ]: faqWidget,
 
 }
 

@@ -24,6 +24,7 @@ const Shortcuts: FC<DraggableChildProps> = ({ minimized }) => {
                 <span>
                     <b>R </b> - Alchemist Radio <br />
                     <b>P </b> - About this Project<br />
+                    <b>F </b> - Alchemist FAQ<br />
                 </span>
             </p>
             <hr />

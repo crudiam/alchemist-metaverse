@@ -21,64 +21,21 @@ const Scene = (props) => {
 
 
 
-const FAQ_URL = 'https://hackmd.io/@thegostep/%E2%9A%97%EF%B8%8F/download';
 // const README_URL = 'https://raw.githubusercontent.com/alchemistcoin/alchemist/main/README.md';
 
 function App(props) {
-  // const documentationModal = useRef(null);
-  const faqModal = useRef(null);
-
-  const [faq, setFaq] = useState([]);
-  // const [readme, setReadme] = useState([]);
-
-    useEffect(() => {
-        const getFAQ = async () => {
-            const resp = await fetch(FAQ_URL);
-            const body = await resp.text()
-            const pages = splitMarkdownIntoPages(body);
-            setFaq(pages)
-        };
-
-        // const getReadMe = async () => {
-        //     const resp = await fetch(README_URL);
-        //     const body = await resp.text()
-        //     const pages = splitMarkdownIntoPages(body);
-        //     setReadme(pages)
-        // };
-
-        getFAQ();
-        // getReadMe();
-
-    }, []);
-
-
-  // const onDocumentationClick = () => {
-  //   documentationModal.current.open();
-  // }
-
-  const onFAQClick = () => {
-    faqModal.current.open();
-  }
-
-
-
 
   return (
     <div className="App">
       <DnDContext />
 
-      <Modal ref={faqModal}>
-        <FAQ pages={faq} />
-      </Modal>
-
-
-      {/* <Canvas>
+      <Canvas>
           <Lights />
-          <Scene {...{ onFAQClick }} />
-      </Canvas> */}
+          <Scene />
+      </Canvas>
 
       {/* Loader */}
-      {/* <Loader /> */}
+      <Loader />
     </div>
   );
 }

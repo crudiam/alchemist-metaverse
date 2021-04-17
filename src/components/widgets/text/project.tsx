@@ -1,5 +1,4 @@
 import { FC } from "react";
-import styled from 'styled-components';
 import { DraggableChildProps } from "../../dnd/draggable";
 import { DraggableItem } from '../../dnd/container';
 import { ItemName } from "../../dnd/types";
@@ -56,7 +55,7 @@ const aboutProjectWidget: DraggableItem = {
     id: ItemName.AboutProject,
     top: 400,
     left: window.innerWidth /2,
-    visible: true,
+    visible: false,
     Component: AboutProject
 }
 
