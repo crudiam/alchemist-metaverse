@@ -69,7 +69,7 @@ const StyledDraggableHandle = styled.div<DraggableChildProps>`
     display: flex;
     flex-direction: row;
 
-    > span {
+    > h1 {
         padding-right: 1em;
         line-height: 25px;
         flex-grow: 1;
@@ -99,6 +99,12 @@ const DraggableHandleButton = styled.button`
     -moz-osx-font-smoothing: inherit;
     -webkit-appearance: none;
     outline: none;
+
+
+    :disabled {
+        cursor: not-allowed;
+
+    }
 `;
 
 const StyledDraggableChildrenWrapper = styled.div`
@@ -126,9 +132,9 @@ const Draggable: FC<DraggableProps> = ({ id, left, top, Component })  => {
             top,
         }}> 
             <StyledDraggableHandle ref={drag} minimized={minimized}>
-                <span>{id}</span>
+                <h1>{id}</h1>
                 <DraggableHandleButton onClick={toggleMinimized}>_</DraggableHandleButton>
-                <DraggableHandleButton>x</DraggableHandleButton>
+                <DraggableHandleButton disabled>x</DraggableHandleButton>
             </StyledDraggableHandle>
             <StyledDraggableChildrenWrapper>
                 <Component minimized={minimized} />

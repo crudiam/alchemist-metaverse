@@ -36,8 +36,8 @@ const Shortcuts: FC<DraggableChildProps> = ({ minimized }) => {
 
 const shortcutWidget: DraggableItem = {
     id: ItemName.Shortcuts,
-    top: 0,
-    left: 0,
+    top: 30,
+    left: window.innerWidth - 300,
     visible: true,
     Component: Shortcuts
 }

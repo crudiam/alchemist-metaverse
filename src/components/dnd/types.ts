@@ -7,5 +7,6 @@ export enum ItemType {
 export enum ItemName {
     Radio = 'Alchemist Radio',
     Shortcuts = 'Keyboard Shortcuts',
+    AboutProject = 'About Project',
 }
 

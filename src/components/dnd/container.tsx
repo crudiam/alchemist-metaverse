@@ -7,6 +7,7 @@ import { useDrop, XYCoord } from "react-dnd";
 import { ItemName, ItemType } from "./types";
 import SoundCloud from "../widgets/soundCloud";
 import shortcutWidget from "../widgets/shortcuts";
+import aboutProjectWidget from "../widgets/project";
 
 
 
@@ -42,7 +43,8 @@ const sampleItems = {
         visible: true,
         Component: SoundCloud
     },
-    [ItemName.Shortcuts]: shortcutWidget
+    [ItemName.Shortcuts]: shortcutWidget,
+    [ItemName.AboutProject]: aboutProjectWidget
 
 }
 
