@@ -1,13 +1,19 @@
-import { FC } from 'react';
+import { FC, useState } from 'react';
 import { useDrag } from 'react-dnd';
 import styled from 'styled-components';
 import { ItemType } from './types';
 
 
+
+export interface DraggableChildProps {
+    minimized: boolean;
+}
+
 interface DraggableProps {
     id: string;
     left: number;
     top: number;
+    Component: FC<DraggableChildProps>;
 }
 
 export interface DraggableItem extends DraggableProps {
@@ -44,24 +50,19 @@ const StyledDraggable = styled.div<Partial<DraggableProps>>`
     
     border-radius: 5px;
 
-    padding: 0.5em;
+    padding: 0.3em 0.5em;
 
     max-width: 100%;
     min-width: 200px;
-
     z-index: 2;
 
-
     ${PAPER_BACKGROUND};
-
-    
-
 `;
 
-const StyledDraggableHandle = styled.div`
+const StyledDraggableHandle = styled.div<DraggableChildProps>`
     width: 100%;
     height: 25px;
-    padding-bottom: 0.5em;
+    padding-bottom: ${props => props.minimized ? 0 : '0.3em'};
 
     cursor: move;
 
@@ -91,18 +92,20 @@ const DraggableHandleButton = styled.button`
     display: flex;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
 
     -webkit-font-smoothing: inherit;
     -moz-osx-font-smoothing: inherit;
     -webkit-appearance: none;
+    outline: none;
 `;
 
 const StyledDraggableChildrenWrapper = styled.div`
     width: 100%;
 `;
 
-const Draggable: FC<DraggableProps> = ({ id, left, top, children })  => {
-
+const Draggable: FC<DraggableProps> = ({ id, left, top, Component })  => {
+    const [minimized, setMinimized] = useState(false);
 
     const [{ isDragging: _ }, drag, preview] = useDrag(() => ({
         item: { id, left, top },
@@ -112,6 +115,8 @@ const Draggable: FC<DraggableProps> = ({ id, left, top, children })  => {
         })
     }), [id, left, top]);
 
+    const toggleMinimized = () => setMinimized(!minimized);
+
     return (
         <StyledDraggable {...{
             role: ItemType.DraggableItem,
@@ -119,12 +124,14 @@ const Draggable: FC<DraggableProps> = ({ id, left, top, children })  => {
             left,
             top,
         }}> 
-            <StyledDraggableHandle ref={drag}>
+            <StyledDraggableHandle ref={drag} minimized={minimized}>
                 <span>{id}</span>
-                <DraggableHandleButton>_</DraggableHandleButton>
+                <DraggableHandleButton onClick={toggleMinimized}>_</DraggableHandleButton>
                 <DraggableHandleButton>x</DraggableHandleButton>
             </StyledDraggableHandle>
-            <StyledDraggableChildrenWrapper children={children} />
+            <StyledDraggableChildrenWrapper>
+                <Component minimized={minimized} />
+            </StyledDraggableChildrenWrapper> 
         </StyledDraggable>
     );
 }

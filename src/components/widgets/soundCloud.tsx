@@ -1,5 +1,6 @@
 import { createRef, FC, useEffect, useState } from "react";
 import loadscript from 'load-script';
+import { DraggableChildProps } from "../dnd/draggable";
 
 
 declare global {
@@ -9,16 +10,12 @@ declare global {
 }
 
 const ALCHEMIST_RADIO_URL = 'https://soundcloud.com/alchemist-coin-radio/sets/alchemist-radio';
-const iframeStyles = { border: 'none', width: 300, height: 400 };
 
-const SoundCloud: FC = () => {
-
+const SoundCloud: FC<DraggableChildProps> = ({ minimized }) => {
+    const iframeRef = createRef<HTMLIFrameElement>();
+    const [player, setPlayer] = useState<any>(null);
     const [playing, setPlaying] = useState(false);
     const [index, setIndex] = useState(0);
-
-    const [player, setPlayer] = useState<any>(null);
-
-    const iframeRef = createRef<HTMLIFrameElement>();
 
     useEffect(() => {
         loadscript('https://w.soundcloud.com/player/api.js', () => {
@@ -34,7 +31,6 @@ const SoundCloud: FC = () => {
             player.bind(PAUSE, () => player.isPaused(isPaused => setPlaying(!isPaused)));
         });
     }, []);
-
 
     useEffect(() => {
         if (!player) return;
@@ -55,20 +51,18 @@ const SoundCloud: FC = () => {
         });
     }
 
-
     const controls = [
         <button onClick={() => changeIndex(false)}>{'<'}</button>,
         <button onClick={togglePlayback}>{playing ? 'Pause': 'Play'}</button>,
         <button onClick={() => changeIndex(true)}>{'>'}</button>
-    ]
-
+    ];
 
     return (
-        <div>
+        <div style={{ display: minimized ? 'none' : 'block'}}>
             <iframe {...{
                 ref: iframeRef,
                 allow: 'autoplay',
-                style: iframeStyles,
+                style: { border: 'none', width: 300, height: 400 },
                 src: `https://w.soundcloud.com/player/?url=${ALCHEMIST_RADIO_URL}`,
             }} />
 

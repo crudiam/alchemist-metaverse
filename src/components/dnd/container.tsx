@@ -1,5 +1,5 @@
 import { FC, ReactChild, ReactNode, useCallback, useState } from "react";
-import Draggable, { DraggableItem as DraggableItemProps } from "./draggable";
+import Draggable, { DraggableChildProps, DraggableItem as DraggableItemProps } from "./draggable";
 
 import styled from 'styled-components';
 import update from 'immutability-helper';
@@ -28,14 +28,15 @@ const StyledContainer = styled.div`
 
 interface DraggableItem extends DraggableItemProps {
     visible: boolean;
-    Component: ReactChild;
 }
 
 interface ContainerState {
     [key: string]: DraggableItem;
 }
 
-const SampleComponent = () => (<div>Sample Component</div>)
+const SampleComponent: FC<DraggableChildProps> = ({ minimized }) => minimized ? null :(
+    <div>Sample Component</div>
+);
 
 
 const sampleItems = {
@@ -44,14 +45,14 @@ const sampleItems = {
         top: 0, 
         left: 0,
         visible: true,
-        Component: <SoundCloud />
+        Component: SoundCloud
     },
     [ItemName.Sample]: { 
         id: ItemName.Sample, 
         top: 300, 
         left: 300,
         visible: true,
-        Component: <SampleComponent />
+        Component: SampleComponent
     },
 }
 
@@ -83,15 +84,11 @@ const Container: FC = () => {
         <StyledContainer {...{
             ref,
             children: Object.keys(items).map((key) => {
-                const { left, top, id, visible, Component } = items[key];
+                const {visible, ...rest} = items[key];
 
                 if (!visible) return null;
 
-                return (
-                    <Draggable {...{ key, id, top, left }}>
-                        {Component}
-                    </Draggable>
-                );
+                return (<Draggable key={key} {...rest } />);
             })
         }} />
     );
