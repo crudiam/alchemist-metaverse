@@ -9,6 +9,7 @@ import Modal from './components/Modal';
 // import Documentation from './components/book/Documentation';
 import FAQ from './components/book/FAQ';
 import { splitMarkdownIntoPages } from './components/book/helpers';
+import DnDContext from './components/dnd';
 
 const Scene = (props) => {
   return (
@@ -64,19 +65,17 @@ function App(props) {
 
   return (
     <div className="App">
-      {/* <Modal ref={documentationModal}>
-        <Documentation pages={readme} />
-      </Modal>
-       */}
+      <DnDContext />
+
       <Modal ref={faqModal}>
         <FAQ pages={faq} />
       </Modal>
 
 
-      <Canvas>
+      {/* <Canvas>
           <Lights />
           <Scene {...{ onFAQClick }} />
-      </Canvas>
+      </Canvas> */}
 
       {/* Loader */}
       <Loader />
