@@ -29,7 +29,7 @@ const Shortcuts: FC<DraggableChildProps> = ({ minimized }) => {
             </p>
             <hr />
             <p>
-                <small>Sortcuts above are the only supported shortcuts for now, I will add new ones to the list</small>
+                <small>Shortcuts above are the only supported shortcuts for now, I will add new ones to the list</small>
             </p>
         </StyledShortcutsWrapper>
     );

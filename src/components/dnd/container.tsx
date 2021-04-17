@@ -1,4 +1,4 @@
-import { FC, ReactChild, ReactNode, useCallback, useState } from "react";
+import { FC, ReactChild, ReactNode, useCallback, useEffect, useState } from "react";
 import Draggable, { DraggableChildProps, DraggableItem as DraggableItemProps } from "./draggable";
 
 import styled from 'styled-components';
@@ -47,7 +47,30 @@ const sampleItems = {
     [ItemName.Shortcuts]: shortcutWidget,
     [ItemName.AboutProject]: aboutProjectWidget,
     [ItemName.FAQ]: faqWidget,
+}
 
+
+const getItemFromKey = (key: string) => {
+    let item = null;
+
+    switch (key) {
+        case 'r':
+        case 'R':
+            item = ItemName.Radio;
+            break;
+        case 'p':
+        case 'P':
+            item = ItemName.AboutProject;
+            break;
+        case 'f':
+        case 'F':
+            item = ItemName.FAQ;
+            break;
+        default:
+            break;
+    }
+
+    return item;
 }
 
 const Container: FC = () => {
@@ -72,6 +95,21 @@ const Container: FC = () => {
             item
         )),
     }), [moveBox]);
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+        const item = getItemFromKey(e.key);
+
+        if (!item || items[item].visible) return;
+
+        setItems(update(items, {
+            [item]: { $merge: { visible: !items[item].visible }}
+        }));
+    }
+
+    useEffect(() => {
+        document.addEventListener('keydown', handleKeyDown)
+        return () => document.removeEventListener('keydown', handleKeyDown);
+    }, []);
 
 
     return (
