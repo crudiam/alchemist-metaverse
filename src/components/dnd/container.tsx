@@ -1,10 +1,11 @@
-import { FC, useCallback, useState } from "react";
-import Draggable, { DraggableItem } from "./draggable";
+import { FC, ReactChild, ReactNode, useCallback, useState } from "react";
+import Draggable, { DraggableItem as DraggableItemProps } from "./draggable";
 
 import styled from 'styled-components';
 import update from 'immutability-helper';
 import { useDrop, XYCoord } from "react-dnd";
-import { ItemType } from "./types";
+import { ItemName, ItemType } from "./types";
+import SoundCloud from "../widgets/soundCloud";
 
 
 
@@ -26,14 +27,37 @@ const StyledContainer = styled.div`
 
 
 
+interface DraggableItem extends DraggableItemProps {
+    visible: boolean;
+    Component: ReactChild;
+}
+
 interface ContainerState {
     [key: string]: DraggableItem;
 }
 
 
+
+const SampleComponent = () => (<div>Sample Component</div>)
+
+
+
+
 const sampleItems = {
-    a: { id: 'a', top: 0, left: 0 },
-    b: { id: 'b', top: 100, left: 100 },
+    [ItemName.Radio]: { 
+        id: ItemName.Radio, 
+        top: 0, 
+        left: 0,
+        visible: true,
+        Component: <SoundCloud />
+    },
+    [ItemName.Sample]: { 
+        id: ItemName.Sample, 
+        top: 300, 
+        left: 300,
+        visible: true,
+        Component: <SampleComponent />
+    },
 }
 
 const Container: FC = () => {
@@ -63,9 +87,17 @@ const Container: FC = () => {
     return (
         <StyledContainer {...{
             ref,
-            children: Object.keys(items).map((key) => (
-                <Draggable {...{ key, ...items[key] }}/>
-            ))
+            children: Object.keys(items).map((key) => {
+                const { left, top, id, visible, Component } = items[key];
+
+                if (!visible) return null;
+
+                return (
+                    <Draggable {...{ key, id, top, left }}>
+                        {Component}
+                    </Draggable>
+                );
+            })
         }} />
     );
 }

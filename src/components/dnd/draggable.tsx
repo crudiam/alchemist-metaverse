@@ -45,7 +45,6 @@ const StyledDraggableChildrenWrapper = styled.div`
 `;
 
 const Draggable: FC<DraggableProps> = ({ id, left, top, children })  => {
-
     const [{ isDragging: _ }, drag, preview] = useDrag(() => ({
         item: { id, left, top },
         type: ItemType.DraggableItem,
