@@ -24,8 +24,8 @@ const FAQWidget: FC<DraggableChildProps> = (props) => {
 
 const faqWidget: DraggableItem = {
     id: ItemName.FAQ,
-    top: 400,
-    left: window.innerWidth /2,
+    top: 200,
+    left: 2 * window.innerWidth /3,
     visible: false,
     Component: FAQWidget
 }

@@ -115,7 +115,7 @@ const StyledDraggableChildrenWrapper = styled.div`
 const Draggable: FC<DraggableProps> = ({ id, left, top, Component, close })  => {
     const [minimized, setMinimized] = useState(false);
 
-    const [{ isDragging: _ }, drag, preview] = useDrag(() => ({
+    const [{ isDragging }, drag, preview] = useDrag(() => ({
         item: { id, left, top },
         type: ItemType.DraggableItem,
         collect: (monitor) => ({
@@ -124,6 +124,8 @@ const Draggable: FC<DraggableProps> = ({ id, left, top, Component, close })  => 
     }), [id, left, top]);
 
     const toggleMinimized = () => setMinimized(!minimized);
+
+
 
     return (
         <StyledDraggable {...{

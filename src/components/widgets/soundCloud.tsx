@@ -51,7 +51,7 @@ const SoundCloud: FC<DraggableChildProps> = ({ minimized }) => {
         });
     }
 
-    const controls = [
+    const _controls = [
         <button onClick={() => changeIndex(false)}>{'<'}</button>,
         <button onClick={togglePlayback}>{playing ? 'Pause': 'Play'}</button>,
         <button onClick={() => changeIndex(true)}>{'>'}</button>

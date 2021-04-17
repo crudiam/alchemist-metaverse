@@ -37,8 +37,8 @@ interface ContainerState {
 const sampleItems = {
     [ItemName.Radio]: { 
         id: ItemName.Radio, 
-        top: 0, 
-        left: 0,
+        top: 50, 
+        left: 50,
         visible: false,
         Component: SoundCloud
     },

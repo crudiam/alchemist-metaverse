@@ -53,8 +53,8 @@ const AboutProject: FC<DraggableChildProps> = (props) => (
 
 const aboutProjectWidget: DraggableItem = {
     id: ItemName.AboutProject,
-    top: 400,
-    left: window.innerWidth /2,
+    top: 200,
+    left: window.innerWidth /3,
     visible: false,
     Component: AboutProject
 }
