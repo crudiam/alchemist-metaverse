@@ -9,6 +9,7 @@ import SoundCloud from "../widgets/soundCloud";
 import shortcutWidget from "../widgets/shortcuts";
 import aboutProjectWidget from "../widgets/text/project";
 import faqWidget from "../widgets/text/faq";
+import inventoryWidget from "../widgets/inventory";
 
 
 
@@ -45,6 +46,7 @@ const sampleItems = {
     [ItemName.Shortcuts]: shortcutWidget,
     [ItemName.AboutProject]: aboutProjectWidget,
     [ItemName.FAQ]: faqWidget,
+    [ItemName.Inventory]: inventoryWidget,
 }
 
 
@@ -52,6 +54,10 @@ const getItemFromKey = (key: string) => {
     let item = null;
 
     switch (key) {
+        case 'i':
+        case 'I':
+            item = ItemName.Inventory;
+            break;
         case 'r':
         case 'R':
             item = ItemName.Radio;

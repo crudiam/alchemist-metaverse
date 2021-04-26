@@ -19,10 +19,7 @@ const Scene = (props) => {
   );
 };
 
-
-
 // const README_URL = 'https://raw.githubusercontent.com/alchemistcoin/alchemist/main/README.md';
-
 function App(props) {
 
   return (

@@ -8,5 +8,6 @@ export enum ItemName {
     Shortcuts = 'Keyboard Shortcuts',
     AboutProject = 'About This Project',
     FAQ = 'Alchemist FAQ',
+    Inventory = 'Inventory',
 }
 
