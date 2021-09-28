@@ -24,7 +24,6 @@ function App(props) {
 
   return (
     <div className="App">
-      <DnDContext />
 
       <Canvas>
           <Lights />
